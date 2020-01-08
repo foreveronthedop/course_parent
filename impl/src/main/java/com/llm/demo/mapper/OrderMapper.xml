@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.llm.demo.mapper.OrderMapper">
+  <resultMap id="BaseResultMap" type="com.llm.demo.entity.Order">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="id" jdbcType="INTEGER" property="id" />
+    <result column="name" jdbcType="VARCHAR" property="name" />
+    <result column="cid" jdbcType="INTEGER" property="cid" />
+    <result column="price" jdbcType="INTEGER" property="price" />
+    <result column="people" jdbcType="VARCHAR" property="people" />
+    <result column="creattime" jdbcType="VARCHAR" property="creattime" />
+    <result column="state" jdbcType="INTEGER" property="state" />
+    <result column="orderno" jdbcType="VARCHAR" property="orderno" />
+  </resultMap>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    id, name, cid, price, people, creattime, state, orderno
+  </sql>
+</mapper>

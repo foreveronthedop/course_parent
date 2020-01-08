@@ -1,0 +1,5 @@
+# Project exclude paths
+/impl/target/
+/interface/target/
+/pojo/target/
+/web/target/

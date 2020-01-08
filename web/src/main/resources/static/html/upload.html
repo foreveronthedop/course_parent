@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>上传页面</title>
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/angular_js/angular.min.js"></script>
+    <link rel="stylesheet" href="../js/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.css">
+    <script src="../js/bootstrap/js/bootstrap.js"></script>
+</head>
+
+<body ng-app="myApp" ng-controller="myController">
+<form action="/upload" method="post" enctype="multipart/form-data" id="myForm">
+    <input type="hidden" name="id" ng-value="id" >
+    请选择头像：<input type="file" name="file" class="file" id="file"/>
+    <input type="submit" value="上传"/>
+</form>
+</body>
+<script>
+    var app=angular.module("myApp",[])
+    app.controller("myController",function ($scope,$http,$location) {
+        var id=$location.search()['id'];
+        alert(id);
+        $scope.id=id;
+
+    })
+
+</script>
+</html>

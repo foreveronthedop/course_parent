@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Insert title here</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <script src="../js/jquery-3.1.1.min.js"></script>
+    <script src="../js/angular_js/angular.min.js"></script>
+    <link rel="stylesheet" href="../js/adminLTE/css/AdminLTE.css">
+    <link rel="stylesheet" href="../js/bootstrap/css/bootstrap.css">
+    <script src="../js/bootstrap/js/bootstrap.js"></script>
+</head>
+<body ng-app="listApp" ng-controller="listCtrl" ng-init="findOne();findorder()">
+<table>
+    <tr>
+        <td>
+            <input type="hidden" ng-model="user.id" name="id" ng-value="id">
+
+           订单编号 <input type="text" ng-model="order.orderno"><br>
+           课程名称 <input type="text" ng-model="order.name" ><br>
+            课程类型	<input type="text" ng-model="course.type" disabled="disabled"><br>
+            代课老师	<input type="text" ng-model="course.teacher" disabled="disabled"><br>
+            下单时间:<input type="text" ng-model="order.creattime"><br>
+            <input type="button" value="修改" ng-click="updateUser()">
+        </td>
+    </tr>
+</table>
+</body>
+
+<script>
+     var app=angular.module("listApp",[])
+    app.controller("listCtrl",function ($scope,$http,$location) {
+        var id=$location.search()['id'];
+        $scope.id=id;
+        $scope.findOne=function () {
+            $http.get("/findOne?id="+$scope.id).then(function (response) {
+                $scope.course=response.data;
+            })
+        }
+        $scope.findorder=function () {
+            $http.get("/findorder?id="+$scope.id).then(function (response) {
+                console.log(response.data.name);
+                $scope.order=response.data;
+            })
+        }
+        $scope.updateUser=function () {
+            $http.post("/insertorder",$scope.order).then(function (response) {
+                if(response.data.success){
+                    alert(response.data.message);
+                }else{
+                    alert(response.data.message);
+                }
+            })
+        }
+    })
+</script>
+</html>
